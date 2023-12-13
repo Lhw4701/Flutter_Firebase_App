@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "14259205782",
+    "project_id": "galaxyray-e2f37",
+    "storage_bucket": "galaxyray-e2f37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14259205782:android:c9940a9e8a64c6355af4b7",
+        "android_client_info": {
+          "package_name": "com.example.financial_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ9KZEG8DzJoJGeddWVQJtTZEDhZ_VH64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,88 @@
+@startuml
+set namespaceSeparator ::
+
+class "financial_app::firebase_options.dart::DefaultFirebaseOptions" {
+  {static} +FirebaseOptions web
+  {static} +FirebaseOptions android
+  {static} +FirebaseOptions ios
+  {static} +FirebaseOptions macos
+  {static} +FirebaseOptions currentPlatform
+}
+
+"financial_app::firebase_options.dart::DefaultFirebaseOptions" o-- "firebase_core_platform_interface::firebase_core_platform_interface.dart::FirebaseOptions"
+
+class "financial_app::homepage.dart::CustomTextStyle" {
+  {static} +TextStyle txtweight
+}
+
+"financial_app::homepage.dart::CustomTextStyle" o-- "flutter::src::painting::text_style.dart::TextStyle"
+
+class "financial_app::homepage.dart::HomePage" {
+  +State<HomePage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "financial_app::homepage.dart::HomePage"
+
+class "financial_app::homepage.dart::_HomePageState" {
+  +User user
+  +FirestoreService firestoreService
+  +TextEditingController itemController
+  +TextEditingController priceController
+  +void openItemBox()
+  +Widget build()
+}
+
+"financial_app::homepage.dart::_HomePageState" o-- "firebase_auth::firebase_auth.dart::User"
+"financial_app::homepage.dart::_HomePageState" o-- "financial_app::services::firestore.dart::FirestoreService"
+"financial_app::homepage.dart::_HomePageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "financial_app::homepage.dart::_HomePageState"
+
+class "financial_app::loginpage.dart::LoginPage" {
+  +State<LoginPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "financial_app::loginpage.dart::LoginPage"
+
+class "financial_app::loginpage.dart::_LoginPageState" {
+  -TextEditingController _nameController
+  -TextEditingController _passwordController
+  +dynamic signIn()
+  +void dispose()
+  +Widget build()
+}
+
+"financial_app::loginpage.dart::_LoginPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "financial_app::loginpage.dart::_LoginPageState"
+
+class "financial_app::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "financial_app::main.dart::MyApp"
+
+class "financial_app::mainpage.dart::MainPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "financial_app::mainpage.dart::MainPage"
+
+class "financial_app::navbar.dart::NavBar" {
+  +User user
+  +Widget build()
+}
+
+"financial_app::navbar.dart::NavBar" o-- "firebase_auth::firebase_auth.dart::User"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "financial_app::navbar.dart::NavBar"
+
+class "financial_app::services::firestore.dart::FirestoreService" {
+  +CollectionReference<Object?> items
+  +dynamic addItem()
+  +Stream<QuerySnapshot<Object?>> getItemsStream()
+  +dynamic updateItem()
+  +dynamic deleteItem()
+}
+
+"financial_app::services::firestore.dart::FirestoreService" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+
+
+@enduml
